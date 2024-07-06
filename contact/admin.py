@@ -6,3 +6,8 @@ class ContactAdmin(admin.ModelAdmin):
     list_display =  'id','firstName','phone','createDate',
     ordering = 'id',
     search_fields = 'id','firstName','lastName'
+
+@admin.register(models.Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display =  'name',
+    
