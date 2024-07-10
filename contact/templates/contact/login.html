@@ -1,0 +1,50 @@
+{% load static %}<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login ou Registrar</title>
+    <link rel="stylesheet" href="{% static "global/css/stylelogin.css" %}">
+</head>
+<body>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<h1>Criar sua conta</h1>
+			<input type="text" placeholder="Name" />
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+            <label class="checkbox-container">
+                <input type="checkbox">
+                <span class="checkmark"></span>Você é admin?
+            </label>
+            <button>Cadastrar</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<h1>Entrar na sua conta</h1>
+			<input type="email" placeholder="Email" />
+			<input type="password" placeholder="Password" />
+			<a href="#">Esqueceu a senha?</a>
+			<button>Login</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Olá, bem vindo</h1>
+				<p>Quer fazer login? Clique aqui</p>
+				<button class="ghost" id="signIn">Fazer login</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Bem vindo de volta!</h1>
+				<p>Você quer fazer o cadastro? Clique aqui</p>
+				<button class="ghost" id="signUp">Fazer cadastro</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="{% static "global/js/scripts.js" %}"></script>
+</body>
+</html>
