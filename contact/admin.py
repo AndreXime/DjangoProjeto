@@ -1,13 +1,12 @@
 from django.contrib import admin
 from contact import models
 
-@admin.register(models.Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display =  'id','firstName','phone','createDate',
-    ordering = 'id',
-    search_fields = 'id','firstName','lastName'
+@admin.register(models.Client)
+class ClientAdmin(admin.ModelAdmin):
+    list_display =  'id','name','cargo'
+    ordering = 'name',
 
-@admin.register(models.Category)
-class CategoryAdmin(admin.ModelAdmin):
-    list_display =  'name',
+@admin.register(models.Equipe)
+class EquipeAdmin(admin.ModelAdmin):
+    list_display =  'nome_da_equipe',
     

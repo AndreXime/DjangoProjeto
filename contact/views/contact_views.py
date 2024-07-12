@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from ..forms import ClientForm
 
 def index(request):
     return render(request,'contact/index.html')

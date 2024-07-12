@@ -1,71 +1,66 @@
-{% load static %}<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="{% static "global/css/styles.css" %}">
-</head>
-<body>
-    <header>
-        <nav>
-            <h3>Workforce Wizards</h3>
-            <ul class="nav-links">
-                <li><a href="#features">Recursos</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bem-vindo ao Futuro da Tecnologia</h1>
-            <p>Explore as últimas inovações e soluções tecnológicas conosco.</p>
-            <a href="/login" class="cta-btn">Comece Agora</a>
-        </div>
-    </section>
-    
-    <section id="features">
-        <h2>Recursos</h2>
-        <div class="features-container">
-            <div class="feature">
-                <h3>Registro e Autenticação</h3>
-                <p>Usuários registram no sistema com login seguro e suporte para recuperação de senha </p>
-            </div>
-            <div class="feature">
-                <h3>Administração e Atribuição de tarefas </h3>
-                <p>Painel administrativo para gerenciar usuários e Administradores podem criar e atribuir tarefas a membros específicos da equipe</p>
-            </div>
-            <div class="feature">
-                <h3>Segurança e Suporte</h3>
-                <p>Proteja seus dados com nossa tecnologia avançada e Suporte 24/7 para garantir o melhor serviço.</p>
-            </div>
-        </div>
-    </section>
-    
-    <section id="about">
-        <h2>Sobre Nós</h2>
-        <p>Na Workforce Wizards, somos especialistas em transformar a maneira como as equipes são gerenciadas através de soluções tecnológicas inovadoras. Desde nossa fundação, nos dedicamos a desenvolver ferramentas que não apenas facilitam a gestão de equipes, mas também promovem um ambiente de trabalho mais eficiente e colaborativo.
+{% extends "global/base.html" %}
 
-            Nossa missão é capacitar as empresas com tecnologia de ponta para que possam gerenciar seus talentos de forma mais eficaz. Combinamos inteligência artificial, análise de dados e interfaces intuitivas para oferecer uma experiência de gestão que é ao mesmo tempo poderosa e fácil de usar.</p>
-    </section>
-    
-    <section id="contact">
-        <h2>Contato</h2>
-        <h3>Endereço:</h3>
-        <p>Avenida Inovação, 1234 Centro Tecnológico, São Paulo - SP, 01000-000</p>
-           
-        <h3>Telefone:</h3>
-        <p>+55 (11) 1234-5678 </p>
-        <h3>E-mail:</h3>
-        <p>contato@workforcewizards.com</p>
-            
-        <h3>Horário de Atendimento:</h3>
-        <p>Segunda a Sexta: 9h às 18h</p>
-        <p>Sábado: 9h às 13h</p>
-        <p>Domingo e Feriados: Fechado</p>
-    </section>
-    
-</body>
-</html>
+{% block content %}
+{% load static %} <link rel="stylesheet" href="{% static "global/css/styles.css" %}">
+
+<header>
+    <nav>
+        <h3>Workforce Wizards</h3>
+        <ul class="nav-links">
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Bem-vindo ao Futuro da Tecnologia</h1>
+        <p>Explore as últimas inovações e soluções tecnológicas conosco.</p>
+        <a href="/login" class="cta-btn">Comece Agora</a>
+    </div>
+</section>
+
+<section id="features">
+    <h2>Recursos</h2>
+    <div class="features-container">
+        <div class="feature">
+            <h3>Registro e Autenticação</h3>
+            <p>Usuários registram no sistema com login seguro e suporte para recuperação de senha </p>
+        </div>
+        <div class="feature">
+            <h3>Administração e Atribuição de tarefas </h3>
+            <p>Painel administrativo para gerenciar usuários e Administradores podem criar e atribuir tarefas a membros específicos da equipe</p>
+        </div>
+        <div class="feature">
+            <h3>Segurança e Suporte</h3>
+            <p>Proteja seus dados com nossa tecnologia avançada e Suporte 24/7 para garantir o melhor serviço.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>Sobre Nós</h2>
+    <p>Na Workforce Wizards, somos especialistas em transformar a maneira como as equipes são gerenciadas através de soluções tecnológicas inovadoras. Desde nossa fundação, nos dedicamos a desenvolver ferramentas que não apenas facilitam a gestão de equipes, mas também promovem um ambiente de trabalho mais eficiente e colaborativo.
+
+        Nossa missão é capacitar as empresas com tecnologia de ponta para que possam gerenciar seus talentos de forma mais eficaz. Combinamos inteligência artificial, análise de dados e interfaces intuitivas para oferecer uma experiência de gestão que é ao mesmo tempo poderosa e fácil de usar.</p>
+</section>
+
+<section id="contact">
+    <h2>Contato</h2>
+    <h3>Endereço:</h3>
+    <p>Avenida Inovação, 1234 Centro Tecnológico, São Paulo - SP, 01000-000</p>
+       
+    <h3>Telefone:</h3>
+    <p>+55 (11) 1234-5678 </p>
+    <h3>E-mail:</h3>
+    <p>contato@workforcewizards.com</p>
+        
+    <h3>Horário de Atendimento:</h3>
+    <p>Segunda a Sexta: 9h às 18h</p>
+    <p>Sábado: 9h às 13h</p>
+    <p>Domingo e Feriados: Fechado</p>
+</section>
+
+{% endblock content %}
