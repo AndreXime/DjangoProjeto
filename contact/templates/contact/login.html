@@ -8,20 +8,21 @@
 		<form method="POST">
 			<h1>Criar sua conta</h1>
 			{% csrf_token %}
-			{{ form.name }}
-			{{ form.email }}
-			{{ form.password }}
+			{{ cadastrar.name }}
+			{{ cadastrar.email }}
+			{{ cadastrar.password }}
 			<div class="checkbox-container">
-				{{ form.admin }} {{ form.admin.label_tag}}
+				{{ cadastrar.admin }} {{ cadastrar.admin.label_tag}}
 			</div>
             <button type="submit">Cadastrar</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form method="GET">
+		<form method="POST">
 			<h1>Entrar na sua conta</h1>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Senha" />
+			{% csrf_token %}
+			{{ login.name }}
+			{{ login.password }}
 			<a href="/forgotpassword">Esqueceu a senha?</a>
 			<button type="submit">Login</button>
 		</form>
