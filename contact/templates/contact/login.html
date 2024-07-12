@@ -5,21 +5,20 @@
 
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="" method="Post" enctype="multipart/form-data">
+		<form method="POST">
 			<h1>Criar sua conta</h1>
 			{% csrf_token %}
-			<input type="text" name="name" placeholder="Nome"/>
-			<input type="email" name="email" placeholder="Email"/>
-			<input type="password" name="senha" placeholder="Senha"/>
-            <label class="checkbox-container">
-                <input type="checkbox">
-                <span class="checkmark"></span>Você é admin?
-            </label>
+			{{ form.name }}
+			{{ form.email }}
+			{{ form.password }}
+			<div class="checkbox-container">
+				{{ form.admin }} {{ form.admin.label_tag}}
+			</div>
             <button type="submit">Cadastrar</button>
 		</form>
 	</div>
 	<div class="form-container sign-in-container">
-		<form action="/dashboard/" method="Get">
+		<form method="GET">
 			<h1>Entrar na sua conta</h1>
 			<input type="email" placeholder="Email" />
 			<input type="password" placeholder="Senha" />

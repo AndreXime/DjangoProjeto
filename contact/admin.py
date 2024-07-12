@@ -4,7 +4,6 @@ from contact import models
 @admin.register(models.Client)
 class ClientAdmin(admin.ModelAdmin):
     list_display =  'id','name','cargo'
-    ordering = 'name',
 
 @admin.register(models.Equipe)
 class EquipeAdmin(admin.ModelAdmin):

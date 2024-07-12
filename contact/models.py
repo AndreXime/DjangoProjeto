@@ -1,5 +1,4 @@
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import User
 
 class Equipe(models.Model):
@@ -13,13 +12,13 @@ class Client(models.Model):
     name =  models.CharField(max_length=50, blank=False)
     email = models.EmailField(max_length=250, blank=False)
     password = models.CharField(max_length=50, blank=False)
-    phone =  models.CharField(max_length=50)
+    phone =  models.CharField(max_length=50,blank=True)
     imagem = models.ImageField(blank=True, upload_to='pictures/%Y/%m/%d')
 
     #Administração
     admin = models.BooleanField(default=False)
     equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, blank=True, null=True)
-    cargo = models.CharField(max_length=50)
+    cargo = models.CharField(max_length=50,blank=True)
 
     def __str__(self) -> str:
         return f'{self.cargo} - {self.name}'
