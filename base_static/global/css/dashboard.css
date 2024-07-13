@@ -45,3 +45,16 @@ body {
 .tabcontent h2 {
   margin-top: 0;
 }
+
+button{
+  padding: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background-color: #e0cdcd;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+button:hover{
+  background-color: rgb(206, 185, 185);
+}

@@ -9,9 +9,7 @@ class Equipe(models.Model):
     
 class Client(models.Model):
     #Informações pessoais
-    name =  models.CharField(max_length=50, blank=False)
-    email = models.EmailField(max_length=250, blank=False)
-    password = models.CharField(max_length=50, blank=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone =  models.CharField(max_length=50,blank=True)
     imagem = models.ImageField(blank=True, upload_to='pictures/%Y/%m/%d')
 
@@ -19,6 +17,9 @@ class Client(models.Model):
     admin = models.BooleanField(default=False)
     equipe = models.ForeignKey(Equipe, on_delete=models.SET_NULL, blank=True, null=True)
     cargo = models.CharField(max_length=50,blank=True)
+
+    class Meta:
+        permissions = [('staff','Pode administrar equipes')]
 
     def __str__(self) -> str:
         return f'{self.cargo} - {self.name}'

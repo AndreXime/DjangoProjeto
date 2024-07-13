@@ -14,7 +14,6 @@
         <h2>Profile</h2>
         <p>Nome: {{user}}</p>
         <p>Email: {{email}}</p>
-        <p>Administrador: Não</p>
         <form method="post" action="trocar">
             {% csrf_token %}
             <button type="submit">Trocar senha</button>

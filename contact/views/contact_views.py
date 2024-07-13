@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login,logout
 from contact.forms import ClientForm,ClientLoginForm
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,Group
 from django.contrib.auth.decorators import login_required
 
 def Home(request):
     return render(request,'contact/index.html')
 
 def SignUpIn(request):
+    if request.user.is_authenticated:
+        return redirect('/dashboard')
     if request.method == 'POST':
         loginForm = ClientLoginForm(request.POST)
         if loginForm.is_valid():
@@ -23,9 +25,15 @@ def SignUpIn(request):
             name = cadastrarForm.cleaned_data['name']
             email = cadastrarForm.cleaned_data['email']
             password = cadastrarForm.cleaned_data['password']
-            user = User.objects.create_user(name, email, password)
-            login(request, user)    
-            return redirect("/dashboard")
+            #Verificar se tem alguem já com esse nome
+            if not User.objects.filter(username=name, email=email).exists():
+                user = User.objects.create_user(username=name, email=email, password=password)
+                if cadastrarForm['admin']:
+                    Group.objects.get_or_create(name='Administradores').user_set.add(user)
+                login(request, user) 
+                return redirect("dashboard")
+            else:
+                raise PermissionError("Nome já cadastrado")
     else:
         loginForm = ClientLoginForm()
         cadastrarForm = ClientForm()
