@@ -1,0 +1,49 @@
+{% extends "global/base.html" %}
+
+{% block content %}
+{% load static %} <link rel="stylesheet" href="{% static "global/css/dashboard.css" %}">
+<div class="dashboard">
+    <div class="tabs">
+        <button class="tablink" data-tab="Profile">Profile</button>
+        <button class="tablink" data-tab="Tarefas">Tarefas a Fazer</button>
+        <button class="tablink" data-tab="Membros">Membros da Equipe</button>
+        <button class="tablink" data-tab="Admin">Administração</button>
+    </div>
+
+    <div id="Profile" class="tabcontent">
+        <h2>Profile</h2>
+        <p>Nome: {{user}}</p>
+        <p>Email: {{email}}</p>
+        <p>Administrador: Não</p>
+        <form method="post" action="trocar">
+            {% csrf_token %}
+            <button type="submit">Trocar senha</button>
+        </form>
+        <form method="post" action="logout">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+
+    <div id="Tarefas" class="tabcontent">
+        <h2>Tarefas a Fazer</h2>
+        <p>Lista de tarefas a fazer aqui.</p>
+    </div>
+
+    <div id="Membros" class="tabcontent">
+        <h2>Membros da Equipe</h2>
+        <ul>
+            {% for usuario in alluser %}
+                <li>{{ usuario.username }} : {{ usuario.email}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div id="Admin" class="tabcontent">
+        <h2>Membros da Equipe</h2>
+        <p>Lista de membros da equipe aqui.</p>
+    </div>
+</div>
+
+<script src="{% static "global/js/dashboard.js" %}"></script>
+{% endblock content %}
