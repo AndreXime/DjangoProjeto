@@ -3,6 +3,9 @@ body {
   background-color: #f2f2f2;
   margin: 0;
   padding: 0;
+  background-image: url("../img/dashboard.jpg");
+  background-size: cover;
+  background-position: center center;
 }
 
 .dashboard {
@@ -16,7 +19,6 @@ body {
   justify-content: space-around;
   background-color: #222831;
   padding: 10px;
-  border-radius: 5px;
 }
 
 .tablink {

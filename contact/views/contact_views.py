@@ -29,7 +29,8 @@ def SignUpIn(request):
             if not User.objects.filter(username=name, email=email).exists():
                 user = User.objects.create_user(username=name, email=email, password=password)
                 if cadastrarForm['admin']:
-                    Group.objects.get_or_create(name='Administradores').user_set.add(user)
+                    group, created = Group.objects.get_or_create(name='Administradores')
+                    group.user_set.add(user)
                 login(request, user) 
                 return redirect("dashboard")
             else:

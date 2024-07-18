@@ -7,7 +7,7 @@
         <button class="tablink" data-tab="Profile">Profile</button>
         <button class="tablink" data-tab="Tarefas">Tarefas a Fazer</button>
         <button class="tablink" data-tab="Membros">Membros da Equipe</button>
-        <button class="tablink" data-tab="Admin">Administração</button>
+        <button class="tablink" data-tab="Mensagens">Mensagens</button>
     </div>
 
     <div id="Profile" class="tabcontent">
@@ -17,6 +17,10 @@
         <form method="post" action="trocar">
             {% csrf_token %}
             <button type="submit">Trocar senha</button>
+        </form>
+        <form method="post" action="administrador">
+            {% csrf_token %}
+            <button type="submit">Admin</button>
         </form>
         <form method="post" action="logout">
             {% csrf_token %}
@@ -38,9 +42,9 @@
         </ul>
     </div>
 
-    <div id="Admin" class="tabcontent">
-        <h2>Membros da Equipe</h2>
-        <p>Lista de membros da equipe aqui.</p>
+    <div id="Mensagens" class="tabcontent">
+        <h2>Mensagens da sua equipe</h2>
+        <p>Example</p>
     </div>
 </div>
 
