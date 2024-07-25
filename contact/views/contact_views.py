@@ -17,8 +17,11 @@ def SignUpIn(request):
             password = loginForm.cleaned_data['password']
             user = authenticate(request, username=name, password=password)
             if user:
-                login(request, user)    
-                return redirect("/dashboard")
+                login(request, user)
+                if request.user.groups.filter(name='Administradores').exists():
+                    return redirect("admin")
+                else:
+                    return redirect("dashboard")
 
         cadastrarForm = ClientForm(request.POST)
         if cadastrarForm.is_valid():
@@ -28,11 +31,15 @@ def SignUpIn(request):
             #Verificar se tem alguem já com esse nome
             if not User.objects.filter(username=name, email=email).exists():
                 user = User.objects.create_user(username=name, email=email, password=password)
+                login(request, user) 
                 if cadastrarForm['admin']:
                     group, created = Group.objects.get_or_create(name='Administradores')
                     group.user_set.add(user)
-                login(request, user) 
-                return redirect("dashboard")
+                    return redirect("admin")
+                else:
+                    group, created = Group.objects.get_or_create(name='Usuarios')
+                    group.user_set.add(user)
+                    return redirect("dashboard")
             else:
                 raise PermissionError("Nome já cadastrado")
     else:
@@ -40,6 +47,19 @@ def SignUpIn(request):
         cadastrarForm = ClientForm()
 
     return render(request,'contact/login.html',{'login':loginForm, 'cadastrar':cadastrarForm})
+
+@login_required(login_url='login/')
+def Administrador(request):
+    if not request.user.groups.filter(name='Administradores').exists():
+        return redirect("dashboard")
+    
+    user = request.user
+    context = {
+        'user': user.username,
+        'email': user.email,
+        'alluser': User.objects.all(),
+    }
+    return render(request,'contact/admin.html', context=context)
 
 @login_required(login_url="login/")
 def Dashboard(request):

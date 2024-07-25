@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    background-image: url("../img/dashboard.jpg");
+    background-size: cover;
+    background-position: center center;
+  }
+  
+  .dashboard {
+    width: 80%;
+    margin: 0 auto;
+    background-color: #ebe3e3;
+  }
+  
+  .tabs {
+    display: flex;
+    justify-content: space-around;
+    background-color: #222831;
+    padding: 19px; 
+  }
+  
+  .tablink {
+    cursor: pointer;
+    font-size: large;
+    font-family: inherit;
+    font-weight: bold;
+    color: #0011ff;
+    background-color: #f8f8fd;
+    padding: 0.8em 2.2em;
+    border-radius: 50em;
+    border: 6px solid #8b93f8;
+    box-shadow: 0px 8px #1f35ff;
+  }
+  
+  .tablink:active {
+    position: relative;
+    top: 8px;
+    border: 6px solid #646fff;
+    box-shadow: 0px 0px;
+  }
+  
+  .tabcontent {
+    display: none;
+    padding: 20px;
+    border-top: none;
+    font-size: 120%;
+  }
+  
+  .tabcontent h2 {
+    margin-top: 0;
+  }
+  
+  .netpage{
+    background: #fbca1f;
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 12px;
+    border: 3px solid black;
+    border-radius: 0.4em;
+    box-shadow: 0.1em 0.1em;
+    cursor: pointer;
+  }
+  
+  .netpage:hover {
+    transform: translate(-0.05em, -0.05em);
+    box-shadow: 0.15em 0.15em;
+  }

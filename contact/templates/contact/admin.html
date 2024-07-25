@@ -1,11 +1,10 @@
 {% extends "global/base.html" %}
-
 {% block content %}
-{% load static %} <link rel="stylesheet" href="{% static "global/css/dashboard.css" %}">
+{% load static %} <link rel="stylesheet" href="{% static "global/css/admin.css" %}">
 <div class="dashboard">
     <div class="tabs">
         <button class="tablink" data-tab="Profile">Profile</button>
-        <button class="tablink" data-tab="Tarefas">Tarefas</button>
+        <button class="tablink" data-tab="Tarefas">Admin</button>
         <button class="tablink" data-tab="Membros">Membros</button>
         <button class="tablink" data-tab="Mensagens">Mensagens</button>
     </div>
@@ -25,8 +24,23 @@
     </div>
 
     <div id="Tarefas" class="tabcontent">
-        <h2>Tarefas a Fazer</h2>
-        <p>Lista de tarefas a fazer aqui.</p>
+        <h2>Administração</h2>
+        <form method="post" action="trocar">
+            {% csrf_token %}
+            <button class="netpage" type="submit">Renomear Grupo</button>
+        </form>
+        <form method="post" action="logout">
+            {% csrf_token %}
+            <button class="netpage" type="submit">Criar Grupo</button>
+        </form>
+        <form method="post" action="trocar">
+            {% csrf_token %}
+            <button class="netpage" type="submit">Atribuir Tarefas a Membros</button>
+        </form>
+        <form method="post" action="logout">
+            {% csrf_token %}
+            <button class="netpage" type="submit">Remover Membros</button>
+        </form>
     </div>
 
     <div id="Membros" class="tabcontent">
@@ -46,3 +60,4 @@
 
 <script src="{% static "global/js/dashboard.js" %}"></script>
 {% endblock content %}
+

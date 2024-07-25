@@ -18,23 +18,27 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: #222831;
-  padding: 10px;
+  padding: 19px; 
 }
 
 .tablink {
-  background-color: #6b7d9ab1;
-  color: white;
-  border: #6b7d9ab1;
-  border-style: solid;
-  border-radius: 15%;
-  padding: 14px 16px;
-  font-size: 17px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  font-size: large;
+  font-family: inherit;
+  font-weight: bold;
+  color: #0011ff;
+  background-color: #f8f8fd;
+  padding: 0.8em 2.2em;
+  border-radius: 50em;
+  border: 6px solid #8b93f8;
+  box-shadow: 0px 8px #1f35ff;
 }
 
-.tablink:hover {
-  background-color: #222831;
+.tablink:active {
+  position: relative;
+  top: 8px;
+  border: 6px solid #646fff;
+  box-shadow: 0px 0px;
 }
 
 .tabcontent {
@@ -48,15 +52,20 @@ body {
   margin-top: 0;
 }
 
-button{
-  padding: 10px;
-  margin-bottom: 15px;
+.netpage{
+  background: #fbca1f;
+  font-family: inherit;
+  padding: 0.6em 1.3em;
+  margin-bottom: 10px;
+  font-weight: 900;
+  font-size: 12px;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
   cursor: pointer;
-  background-color: #e0cdcd;
-  font-weight: bold;
-  font-size: 13px;
 }
 
-button:hover{
-  background-color: rgb(206, 185, 185);
+.netpage:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
 }
