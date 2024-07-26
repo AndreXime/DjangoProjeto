@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login,logout
-from contact.forms import ClientForm,ClientLoginForm
 from django.contrib.auth.models import User,Group
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from contact.forms import ClientForm,ClientLoginForm
+from contact.models import Client
 
 def Home(request):
     return render(request,'contact/index.html')
@@ -28,11 +30,12 @@ def SignUpIn(request):
             name = cadastrarForm.cleaned_data['name']
             email = cadastrarForm.cleaned_data['email']
             password = cadastrarForm.cleaned_data['password']
+            admin = cadastrarForm['admin']
             #Verificar se tem alguem já com esse nome
             if not User.objects.filter(username=name, email=email).exists():
                 user = User.objects.create_user(username=name, email=email, password=password)
-                login(request, user) 
-                if cadastrarForm['admin']:
+                login(request, user)
+                if admin:
                     group, created = Group.objects.get_or_create(name='Administradores')
                     group.user_set.add(user)
                     return redirect("admin")
@@ -52,12 +55,17 @@ def SignUpIn(request):
 def Administrador(request):
     if not request.user.groups.filter(name='Administradores').exists():
         return redirect("dashboard")
-    
-    user = request.user
+
+    try:
+        usuario_equipe = Client.objects.get(user=request.user).equipe
+        membros_equipe = Client.objects.filter(equipe=usuario_equipe)
+    except ObjectDoesNotExist:
+        usuario_equipe, membros_equipe = False,False
+
     context = {
-        'user': user.username,
-        'email': user.email,
-        'alluser': User.objects.all(),
+        'user': request.user,
+        'equipe': usuario_equipe,
+        'equipe_membros': membros_equipe,
     }
     return render(request,'contact/admin.html', context=context)
 
@@ -66,11 +74,16 @@ def Dashboard(request):
     if request.method == 'POST':
         pass
 
-    user = request.user
+    try:
+        usuario_equipe = Client.objects.get(user=request.user).equipe
+        membros_equipe = Client.objects.filter(equipe=usuario_equipe)
+    except ObjectDoesNotExist:
+        usuario_equipe, membros_equipe = False,False
+   
     context = {
-        'user': user.username,
-        'email': user.email,
-        'alluser': User.objects.all(),
+        'user': request.user,
+        'equipe': usuario_equipe,
+        'equipe_membros': membros_equipe,
     }
     return render(request, 'contact/dashboard.html', context=context)
 

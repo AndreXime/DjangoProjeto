@@ -11,8 +11,8 @@
 
     <div id="Profile" class="tabcontent">
         <h2>Profile</h2>
-        <p>Nome: {{user}}</p>
-        <p>Email: {{email}}</p>
+        <p>Nome: {{ user.username }}</p>
+        <p>Email: {{ user.email }}</p>
         <form method="post" action="trocar">
             {% csrf_token %}
             <button class="netpage" type="submit">Trocar senha</button>
@@ -25,31 +25,39 @@
 
     <div id="Tarefas" class="tabcontent">
         <h2>Administração</h2>
-        <form method="post" action="trocar">
+        {% if equipe %}
+        <h3> Sua equipe: {{ equipe }}</h3>
+        <form method="post">
             {% csrf_token %}
             <button class="netpage" type="submit">Renomear Grupo</button>
         </form>
-        <form method="post" action="logout">
-            {% csrf_token %}
-            <button class="netpage" type="submit">Criar Grupo</button>
-        </form>
-        <form method="post" action="trocar">
+        <form method="post">
             {% csrf_token %}
             <button class="netpage" type="submit">Atribuir Tarefas a Membros</button>
         </form>
-        <form method="post" action="logout">
+        <form method="post">
             {% csrf_token %}
             <button class="netpage" type="submit">Remover Membros</button>
         </form>
+        {% else %}
+        <form method="post">
+            {% csrf_token %}
+            <button class="netpage" type="submit">Criar Grupo</button>
+        </form>
+        {% endif %}
     </div>
 
     <div id="Membros" class="tabcontent">
         <h2>Membros da Equipe</h2>
+        {% if equipe_membros %}
         <ul>
-            {% for usuario in alluser %}
-                <li>{{ usuario.username }} : {{ usuario.email}}</li>
+            {% for usuario in equipe_membros %}
+                <li>{{ usuario.user.username }} : {{ usuario.user.email}}</li>
             {% endfor %}
         </ul>
+        {% else %}
+        <p>Você não criou sua equipe ainda</p>
+        {% endif %}
     </div>
 
     <div id="Mensagens" class="tabcontent">
