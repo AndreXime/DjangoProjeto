@@ -60,19 +60,29 @@ nav {
     height: 80vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     text-align: center;
-    background-color: #f9f9f9;;   
+    background-image: url("../img/Company-amico.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 3px 10px 0 rgba( 31, 38, 135, 0.37 );
 }
 
 .hero-content h1 {
+    background-color: #f2f2f2b9;
+    backdrop-filter: blur(6px);
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    padding: 10px;
 }
 
 .hero-content p {
+    background-color: #f2f2f2b9;
+    backdrop-filter: blur(6px);
+    font-weight: bold;
     font-size: 1.5rem;
     margin: 2rem;
+    padding: 10px;
 }
 
 .cta-btn {
